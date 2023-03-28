@@ -9,8 +9,8 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-openai.api_key = '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'
-os.environ['OPENAI_API_KEY'] = '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'
+openai.api_key = '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'
+os.environ['OPENAI_API_KEY'] = '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'
 
 
 @app.route('/api/timeline', methods=['GET'])
@@ -39,7 +39,7 @@ def solve3():
     assessment_input =data['assessment']
     time_taken = data['timetaken']
     #print(assessment_input,30)
-    loaded_model = pickle.load(open("model.pkl", 'rb'))
+    loaded_model = pickle.load(open("C:/Users/harsh/Desktop/Hackathon RJ/shikshamiraz/ML_API/pickle/model.pkl", 'rb'))
     answer = loaded_model.predict(np.array([[assessment_input, time_taken]]))
     answer = math.ceil(answer)
     print(f"hello {assessment_input}" )
@@ -94,3 +94,6 @@ def solve():
 
     return reply2
 
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
